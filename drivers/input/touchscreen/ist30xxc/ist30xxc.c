@@ -56,6 +56,21 @@
 #include <linux/power_supply.h>
 extern void (*tsp_charger_status_cb)(int);
 
+#if IST30XX_CHECK_BATT_TEMP
+#include <linux/battery/sec_battery.h>
+
+#define BATTERY_TEMP_MAGIC      (0x7E000039)
+#define IST30XX_MAX_CHK_CNT     2   // 500msec unit
+union power_supply_propval temperature;
+s16 ist30xx_batt_temp = 0;
+int ist30xx_batt_chk_cnt = 0;
+int ist30xx_batt_chk_max_cnt = IST30XX_MAX_CHK_CNT;
+#endif
+
+#ifdef CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE
+#include <linux/input/doubletap2wake.h>
+#endif
+
 #define TOUCH_BOOSTER	0
 
 #if TOUCH_BOOSTER
