@@ -19,7 +19,7 @@ jobs:
       run: |
         export KBUILD_BUILD_USER=notnoelchannel
         export KBUILD_BUILD_HOST=unlegacy-devices
-        make -j22 j3xnlte_defconfig
+        make -j22 recovery_j3x_defconfig
         make -j128
     - name: Moving Output # CI only
       run: |
